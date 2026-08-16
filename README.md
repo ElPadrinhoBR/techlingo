@@ -1,7 +1,7 @@
 # TechLingo 🚀
 > **Plataforma Interativa de Ensino de Inglês Técnico para Gestão da Tecnologia da Informação (GTI) & Programação**
 
-![TechLingo Banner](https://img.shields.io/badge/TechLingo-v1.6.0-emerald?style=for-the-badge&logo=duolingo&logoColor=white)
+![TechLingo Banner](https://img.shields.io/badge/TechLingo-v1.6.1-emerald?style=for-the-badge&logo=duolingo&logoColor=white)
 ![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript_5-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
@@ -33,10 +33,11 @@ Se este projeto te ajudou nos estudos de GTI ou inglês técnico, considere apoi
 
 ---
 
-## 🆕 Novidades da Versão 1.6.0
+## 🆕 Novidades da Versão 1.6.1
 
-- ☀️🌙 **Modo Dia & Noite (Tema Claro e Escuro):** Botão de lâmpada interativo no cabeçalho (ao lado do som e notificações) para alternar instantaneamente entre tema claro para leitura diurna e tema escuro cibernético, com persistência automática de preferência.
-- 🔊 **Motor de Voz Nativo Android (`@capacitor-community/text-to-speech`):** Pronúncia fonética de termos técnicos 100% nativa e offline no aplicativo Android instalado.
+- 💾 **Persistência Definitiva de Progresso (Web & Mobile):** Implementação de arquitetura de armazenamento em camada dupla usando `localStorage` e `@capacitor/preferences` (Android `SharedPreferences`). Todos os avanços em lições, trilhas desbloqueadas, XP, ofensivas de estudo, termos memorizados e preferências de tema são gravados de forma instantânea e persistidos de forma segura no dispositivo.
+- ☀️🌙 **Modo Dia & Noite (Tema Claro e Escuro):** Botão de lâmpada interativo no cabeçalho (ao lado do som e notificações) para alternar instantaneamente entre tema claro e tema escuro.
+- 🔊 **Motor de Voz Nativo Android (`@capacitor-community/text-to-speech`):** Pronúncia fonética de termos técnicos nativa e offline no aplicativo Android instalado.
 - 🎨 **Novo Ícone de Alta Definição:** Identidade visual com escudo tecnológico, monograma TL e chaves de programação.
 - ☕ **Integração de Doações Pix & Patreon:** Botões interativos com cópia de chave Pix em 1 clique e link do Patreon.
 - 🚀 **Deploy Automatizado no GitHub Pages (`gh-pages`):** Configuração completa para compilação e publicação web em tempo real.

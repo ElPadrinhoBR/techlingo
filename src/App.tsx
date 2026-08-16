@@ -17,8 +17,7 @@ import { databaseModulesData } from './data/databaseModules';
 import { Lesson, UserProgress, TrackId } from './types';
 import { soundService } from './services/soundService';
 import { notificationService } from './services/notificationService';
-
-const STORAGE_KEY = 'techlingo_user_progress_v3';
+import { storageService, defaultProgress } from './services/storageService';
 
 const allModules = [
   ...gtiModulesData,
@@ -27,42 +26,10 @@ const allModules = [
   ...databaseModulesData
 ];
 
-const defaultProgress: UserProgress = {
-  completedLessonIds: [],
-  currentStreak: 1,
-  lastActiveDate: new Date().toISOString().split('T')[0],
-  totalXp: 0,
-  hearts: 5,
-  maxHearts: 5,
-  gems: 50,
-  unlockedAchievements: [],
-  glossaryFavorites: [],
-  memorizedExpressionIds: [],
-  activeTrackId: 'gti',
-  soundEnabled: true,
-  notificationsEnabled: false,
-  dailyReminderHour: 19,
-  theme: 'dark'
-};
-
 export const App: React.FC = () => {
-  // Load progress from localStorage or default
+  // Load progress synchronously from storageService (LocalStorage / Migrated)
   const [progress, setProgress] = useState<UserProgress>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        return {
-          ...defaultProgress,
-          ...parsed,
-          memorizedExpressionIds: parsed.memorizedExpressionIds || [],
-          theme: parsed.theme || 'dark'
-        };
-      }
-    } catch (e) {
-      console.error('Failed to load user progress:', e);
-    }
-    return defaultProgress;
+    return storageService.loadInitialProgress();
   });
 
   const [activeTab, setActiveTab] = useState<TabType>('learn');
@@ -77,18 +44,35 @@ export const App: React.FC = () => {
     document.documentElement.setAttribute('data-theme', currentTheme);
   }, [progress.theme]);
 
+  // Load and reconcile from Native Capacitor Preferences (Android SharedPreferences)
+  useEffect(() => {
+    storageService.loadNativeProgress().then((nativeData) => {
+      if (nativeData) {
+        setProgress((current) => {
+          // If native storage has more completed lessons or more XP, prioritize it
+          const mergedCompleted = Array.from(new Set([
+            ...current.completedLessonIds,
+            ...nativeData.completedLessonIds
+          ]));
+          return {
+            ...current,
+            ...nativeData,
+            completedLessonIds: mergedCompleted,
+            totalXp: Math.max(current.totalXp, nativeData.totalXp)
+          };
+        });
+      }
+    });
+  }, []);
+
   // Sync sound service state
   useEffect(() => {
     soundService.setMuted(!progress.soundEnabled);
   }, [progress.soundEnabled]);
 
-  // Persist progress changes to localStorage
+  // Persist progress changes to both LocalStorage and Native Preferences
   useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-    } catch (e) {
-      console.error('Failed to save user progress:', e);
-    }
+    storageService.saveProgress(progress);
   }, [progress]);
 
   // Check daily study reminder notification
@@ -122,13 +106,18 @@ export const App: React.FC = () => {
         }
       }
 
-      return {
+      const updated: UserProgress = {
         ...prev,
         completedLessonIds: newCompleted,
         totalXp: prev.totalXp + xpReward,
         currentStreak: newStreak,
         lastActiveDate: today
       };
+
+      // Force immediate synchronous & async save
+      storageService.saveProgress(updated);
+
+      return updated;
     });
   };
 
