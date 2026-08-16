@@ -3,6 +3,7 @@ import { Trophy, Zap, Flame, Award, CheckCircle, Lock, Rocket, Cloud, Kanban, Sh
 import { UserProgress } from '../types';
 import { achievementsData } from '../data/achievements';
 import { soundService } from '../services/soundService';
+import creatorPhoto from '../assets/creator_photo.jpg';
 
 interface ProfileViewProps {
   progress: UserProgress;
@@ -238,12 +239,9 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
               boxShadow: '0 0 12px rgba(56, 189, 248, 0.35)'
             }}>
               <img
-                src="/creator_photo.jpg"
+                src={creatorPhoto}
                 alt="Roberto Leandro Mendonça Corrêa"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                onError={(e) => {
-                  (e.target as HTMLElement).style.display = 'none';
-                }}
               />
             </div>
 
@@ -315,12 +313,11 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
               { name: 'TypeScript', color: '#38bdf8', bg: '#0c4a6e' },
               { name: 'React 18', color: '#60a5fa', bg: '#1e3a8a' },
               { name: 'HTML5 & CSS3 3D', color: '#34d399', bg: '#064e3b' },
-              { name: 'Web Speech API (Voz Nativa)', color: '#f472b6', bg: '#831843' },
-              { name: 'Web Audio API (Síntese Musical)', color: '#fbbf24', bg: '#78350f' },
+              { name: 'Android Native TTS', color: '#f472b6', bg: '#831843' },
+              { name: 'Web Audio API', color: '#fbbf24', bg: '#78350f' },
               { name: 'Web Notifications', color: '#a78bfa', bg: '#4c1d95' },
-              { name: 'Vite', color: '#646cff', bg: '#2e1065' },
-              { name: 'Lucide Icons', color: '#f87171', bg: '#7f1d1d' },
-              { name: 'Canvas Confetti', color: '#2dd4bf', bg: '#134e4a' }
+              { name: 'Capacitor APK', color: '#38bdf8', bg: '#0369a1' },
+              { name: 'Vite', color: '#646cff', bg: '#2e1065' }
             ].map((tech) => (
               <span
                 key={tech.name}
@@ -337,6 +334,62 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
                 {tech.name}
               </span>
             ))}
+          </div>
+        </div>
+
+        {/* Donation Support Box */}
+        <div style={{
+          backgroundColor: '#1c1917',
+          border: '1.5px solid #f59e0b',
+          borderRadius: '1rem',
+          padding: '1rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.75rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#f59e0b', fontSize: '0.9rem', fontWeight: 800 }}>
+            <span>☕ Apoie o Criador & Manutenção</span>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
+            <button
+              onClick={() => {
+                soundService.playClick();
+                navigator.clipboard?.writeText('Santigarudnanda@gmail.com');
+                alert('Chave Pix copiada com sucesso: Santigarudnanda@gmail.com');
+              }}
+              className="btn-3d"
+              style={{
+                backgroundColor: '#15803d',
+                color: '#fff',
+                padding: '0.45rem 0.85rem',
+                fontSize: '0.78rem',
+                fontWeight: 800,
+                borderRadius: '0.5rem',
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              🔑 Copiar Chave Pix
+            </button>
+
+            <a
+              href="https://www.patreon.com/ElPadrinho/posts/bem-vindo-ao-o-166799005"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-3d"
+              style={{
+                backgroundColor: '#ea580c',
+                color: '#fff',
+                padding: '0.45rem 0.85rem',
+                fontSize: '0.78rem',
+                fontWeight: 800,
+                borderRadius: '0.5rem',
+                textDecoration: 'none',
+                display: 'inline-block'
+              }}
+            >
+              🎨 Patreon Oficial
+            </a>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@
 ![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript_5-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Android](https://img.shields.io/badge/Android_APK-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 ![License MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
 
 ---
@@ -16,27 +17,37 @@
 
 ---
 
+## 💖 Apoie o Criador & Manutenção do Projeto
+
+Se este projeto te ajudou nos estudos de GTI ou inglês técnico, considere apoiar a continuidade e expansão da plataforma:
+
+- **🔑 Chave Pix (E-mail):** `Santigarudnanda@gmail.com`
+- **🎨 Patreon Oficial:** [Acessar Patreon de Roberto Leandro](https://www.patreon.com/ElPadrinho/posts/bem-vindo-ao-o-166799005)
+
+---
+
 ## 📖 Visão Geral
 
-O **TechLingo** é uma Single Page Application (SPA) gamificada e responsiva, inspirada no estilo do Duolingo, criada por **Roberto Leandro Mendonça Corrêa** especificamente para estudantes e profissionais de **Gestão da Tecnologia da Informação (GTI)** que nunca tiveram contato com o inglês técnico.
+O **TechLingo** é uma aplicação completa e gamificada, inspirada no estilo do Duolingo, criada por **Roberto Leandro Mendonça Corrêa** para capacitar estudantes e profissionais de **Gestão da Tecnologia da Informação (GTI)** no domínio do vocabulário técnico corporativo em inglês.
 
-A plataforma ensina vocabulário técnico corporativo, pronúncia nativa com síntese de voz e boas práticas de liderança e engenharia, distribuídas em **4 Grandes Trilhas de Conhecimento**.
+A plataforma conta com **4 Grandes Trilhas de Conhecimento** estruturadas do básico ao avançado, motor de pronúncia nativa e aplicativo Android nativo (`.apk`).
 
 ---
 
 ## 🌟 Principais Recursos
 
 ### 1. 🗺️ 4 Trilhas de Aprendizado (Do Básico ao Avançado)
-- **🏢 Trilha Gestão de TI (GTI) — Do Básico ao Avançado:**
+- **🏢 Trilha Gestão de TI (GTI) — 10 Unidades:**
   - *Infraestrutura & Redes* (Server, Client, Bandwidth, Latency, Downtime).
   - *Metodologias Ágeis & Scrum* (Sprint, Backlog, Daily, PO, Scrum Master).
   - *Governança de TI & ITIL 4* (SLA, SLO, SLI, Incident Management, Tickets).
-  - *Cibersegurança & LGPD* (Data Breach, Ransomware, Phishing, Pentest).
-  - *DevOps & CI/CD* (Pipelines, Staging, Production, Deploy).
+  - *Cibersegurança & LGPD* (Data Breach, Ransomware, Phishing, MFA).
+  - *DevOps & CI/CD* (Pipelines, Staging, Production, Deploy, Rollback).
   - *FinOps & Orçamento* (CapEx vs. OpEx, TCO, ROI de Nuvem).
-  - *Fornecedores & Liderança* (RFP, Vendor Lock-in, SLA Penalties).
+  - *Fornecedores & Contratos* (RFP, Vendor Lock-in, SLA Penalties).
   - *Big Data & BI* (Data Lake, Data Warehouse, ETL Pipelines).
-  - *Arquitetura Corporativa & Liderança Executiva* (TOGAF, COBIT, Governança Estratégica).
+  - *Arquitetura Corporativa* (TOGAF ADM, COBIT Governance).
+  - *Liderança Executiva & CIO* (Chief Information Officer, Change Management).
 
 - **🐍 Trilha Python & Automação — 4 Unidades:**
   - *Fundamentos & Sintaxe* (Variables, Data Types, Print, 4-space Indentation).
@@ -46,7 +57,6 @@ A plataforma ensina vocabulário técnico corporativo, pronúncia nativa com sí
 
 - **🧩 Trilha Algoritmos & Pensamento Computacional — 6 Unidades:**
   - *Os 4 Pilares:* Decomposição, Reconhecimento de Padrões, Abstração e Algoritmos.
-  - *Pseudocódigo & Fluxogramas.*
   - *Estruturas Lineares:* Pilhas / Stacks (`LIFO`) e Filas / Queues (`FIFO`).
   - *Árvores & Grafos:* Árvores de Busca Binária (`BST`) e grafos.
   - *Eficiência & Notação Big-O:* `O(1)`, `O(log n)`, `O(n)`, `O(n²)`, Busca Binária.
@@ -65,70 +75,22 @@ A plataforma ensina vocabulário técnico corporativo, pronúncia nativa com sí
 ---
 
 ### 2. 🧠 Aba "Memorizar" (Expressões Idiomáticas & Mnemônicos)
-- Mais de **35+ expressões corporativas reais de reuniões** (*Keep me in the loop*, *Touch base*, *I don't have the bandwidth*, *Deep dive*, *Out of the box*, *Down the road*, *Firefighting mode*, *Single Point of Failure*, *Smoke test*, *Workaround*, *Sanity check*, *Kill switch*, *Timeboxing*, *Technical Debt*, *Syntactic sugar*, *DRY*, *KISS*, *Idempotency*).
-- **Gatilhos Mentais / Mnemônicos Visuais** (Diferença entre *SLA vs SLO vs SLI*, *CapEx vs OpEx*, *IaaS vs PaaS vs SaaS na Analogia da Pizza*, *RTO vs RPO*).
-- **Checklist Interativo de Memorização** com cálculo de porcentagem e bônus de **+15 XP**.
+- Mais de **35+ expressões corporativas reais de reuniões** com áudio fonético.
+- **Mnemônicos Visuais** (*SLA vs SLO vs SLI*, *CapEx vs OpEx*, *Analogia da Pizza para Nuvem*, *RTO vs RPO*).
+- **Checklist Interativo de Memorização** com bônus de **+15 XP**.
 
 ---
 
-### 3. 🔊 Motor de Áudio Duplo & Síntese Vocal
-- **Pronúncia Nativa em Inglês (Web Speech API):** Transcrição fonética e reprodução falada de cada termo com fallback.
-- **Síntese Musical em Tempo Real (Web Audio API):** Feedback sonoro com acordes musicais para acertos e tons de erro.
-
----
-
-### 4. 🔔 Sistema de Lembretes Diários de Estudo (Push Notifications)
-- Notificações nativas do navegador (`Web Notifications API`) para alertar o aluno no horário escolhido a praticar 5 minutos e manter a **Ofensiva de Estudos**.
-
----
-
-## 🛠️ Stack Tecnológica
-
-| Tecnologia | Finalidade |
-| :--- | :--- |
-| **TypeScript** | Tipagem estática, interfaces de domínio e robustez de código |
-| **React 18** | Arquitetura de componentes reativos e Single Page Application |
-| **HTML5 & CSS3** | Design tátil 3D inspirado no Duolingo com variáveis de cores HSL |
-| **Web Speech API** | Síntese de voz com pronúncia nativa de termos técnicos em inglês |
-| **Web Audio API** | Síntese de efeitos sonoros em tempo real com osciladores e frequências |
-| **Web Notifications** | Lembretes push diários de estudo e preservação de streak |
-| **Vite** | Build tooling ultrarrápido com Hot Module Replacement (HMR) |
-| **Lucide Icons** | Biblioteca completa de ícones vetoriais em SVG |
-| **Canvas Confetti** | Efeitos visuais de celebração ao concluir lições |
-| **Capacitor** | Empacotamento híbrido para compilação de APK Android nativo |
-
----
-
-## 🚀 Como Executar Localmente
-
-### 1. Clonar o repositório
-```bash
-git clone https://github.com/seu-usuario/techlingo.git
-cd techlingo
-```
-
-### 2. Instalar as dependências
-```bash
-npm install
-```
-
-### 3. Iniciar o servidor de desenvolvimento
-```bash
-npm run dev
-```
-Acesse no seu navegador: `http://localhost:3000/`
-
-### 4. Gerar o bundle de produção
-```bash
-npm run build
-```
+### 3. 🔊 Motor de Áudio Nativo (Android & Web)
+- **Plugin Nativo de Síntese de Voz Android (`@capacitor-community/text-to-speech`):** Pronúncia clara em inglês diretamente pelo motor de voz do Android no celular, sem falhas de WebView.
+- **Web Speech API & Web Audio API:** Síntese sonora musical e fonética em navegadores desktop.
 
 ---
 
 ## 📱 Aplicativo Android (.APK)
 
-O projeto conta com suporte a **Capacitor** para geração de aplicativo Android `.apk`:
-- O arquivo compilado fica localizado em: `android/app/build/outputs/apk/debug/app-debug.apk` (ou `TechLingo.apk` na raiz).
+O arquivo compilado do aplicativo Android está disponível na raiz do projeto:
+- 📂 `TechLingo.apk` (Localizado na pasta principal do projeto)
 
 ---
 
