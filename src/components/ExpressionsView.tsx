@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Brain, Volume2, CheckCircle, Circle, Lightbulb, Sparkles, Search, BookmarkCheck } from 'lucide-react';
+import { Brain, Volume2, CheckCircle, Circle, Lightbulb, Search, BookmarkCheck } from 'lucide-react';
 import { MemorizationExpression } from '../types';
 import { expressionsData } from '../data/expressions';
 import { speechService } from '../services/speechService';
@@ -72,32 +72,32 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
     }}>
       {/* Header with Memorization Progress */}
       <div style={{
-        backgroundColor: '#131b2e',
-        border: '2px solid #243253',
+        backgroundColor: 'var(--bg-card)',
+        border: '2px solid var(--bg-border)',
         borderRadius: '1.5rem',
         padding: '1.5rem',
         display: 'flex',
         flexDirection: 'column',
         gap: '1rem',
-        boxShadow: '0 8px 24px rgba(0,0,0,0.3)'
+        boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#f59e0b' }}>
             <Brain size={28} />
             <div>
-              <h2 style={{ fontSize: '1.35rem', fontWeight: 900, color: '#ffffff' }}>
+              <h2 style={{ fontSize: '1.35rem', fontWeight: 900, color: 'var(--text-main)' }}>
                 Laboratório de Memorização & Expressões de TI
               </h2>
-              <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.1rem' }}>
-                Expressões idiomáticas do dia a dia corporativo e gatilhos mentais para nunca mais esquecer.
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.1rem' }}>
+                Expressões idiomáticas do dia a dia corporativo e gatilhos mentais para fixar o aprendizado.
               </p>
             </div>
           </div>
 
           {/* Badge counter */}
           <div style={{
-            backgroundColor: '#0f172a',
-            border: '1.5px solid #334155',
+            backgroundColor: 'var(--bg-card-alt)',
+            border: '1.5px solid var(--bg-border-light)',
             padding: '0.45rem 0.85rem',
             borderRadius: '0.75rem',
             display: 'flex',
@@ -115,7 +115,7 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
         {/* Visual Progress bar */}
         <div style={{
           height: '10px',
-          backgroundColor: '#0f172a',
+          backgroundColor: 'var(--bg-card-alt)',
           borderRadius: '999px',
           overflow: 'hidden'
         }}>
@@ -131,7 +131,7 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
 
       {/* Search Input */}
       <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-        <Search size={20} color="#94a3b8" style={{ position: 'absolute', left: '1rem', pointerEvents: 'none' }} />
+        <Search size={20} color="var(--text-muted)" style={{ position: 'absolute', left: '1rem', pointerEvents: 'none' }} />
         <input
           type="text"
           value={searchQuery}
@@ -140,10 +140,10 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
           style={{
             width: '100%',
             padding: '0.85rem 1rem 0.85rem 2.8rem',
-            backgroundColor: '#0f172a',
-            border: '2px solid #1e293b',
+            backgroundColor: 'var(--bg-card)',
+            border: '2px solid var(--bg-border)',
             borderRadius: '1rem',
-            color: '#f8fafc',
+            color: 'var(--text-main)',
             fontSize: '0.95rem',
             outline: 'none',
             fontFamily: 'inherit'
@@ -157,7 +157,7 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
               right: '1rem',
               background: 'transparent',
               border: 'none',
-              color: '#94a3b8',
+              color: 'var(--text-muted)',
               cursor: 'pointer',
               fontWeight: 700
             }}
@@ -187,9 +187,9 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
                 whiteSpace: 'nowrap',
                 padding: '0.45rem 0.9rem',
                 borderRadius: '999px',
-                border: isSelected ? '1.5px solid #f59e0b' : '1px solid #243253',
-                backgroundColor: isSelected ? '#33230a' : '#131b2e',
-                color: isSelected ? '#fbbf24' : '#94a3b8',
+                border: isSelected ? '1.5px solid #f59e0b' : '1px solid var(--bg-border)',
+                backgroundColor: isSelected ? '#33230a' : 'var(--bg-card)',
+                color: isSelected ? '#fbbf24' : 'var(--text-muted)',
                 fontSize: '0.8rem',
                 fontWeight: 700,
                 cursor: 'pointer',
@@ -213,14 +213,14 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
               key={item.id}
               className="animate-pop-in"
               style={{
-                backgroundColor: '#131b2e',
-                border: isMemorized ? '2px solid #10b981' : '2px solid #243253',
+                backgroundColor: 'var(--bg-card)',
+                border: isMemorized ? '2px solid #10b981' : '2px solid var(--bg-border)',
                 borderRadius: '1.25rem',
                 padding: '1.25rem 1.5rem',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '1rem',
-                boxShadow: isMemorized ? '0 4px 16px rgba(16, 185, 129, 0.15)' : '0 4px 12px rgba(0,0,0,0.2)',
+                boxShadow: isMemorized ? '0 4px 16px rgba(16, 185, 129, 0.15)' : '0 4px 12px rgba(0,0,0,0.05)',
                 transition: 'all 0.2s ease'
               }}
             >
@@ -231,24 +231,25 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
                     <h3 style={{
                       fontSize: '1.35rem',
                       fontWeight: 900,
-                      color: '#ffffff',
+                      color: 'var(--text-main)',
                       fontFamily: 'var(--font-mono)'
                     }}>
                       {item.expression}
                     </h3>
-                    <span style={{ fontSize: '0.85rem', color: '#94a3b8', fontStyle: 'italic' }}>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
                       {item.phonetic}
                     </span>
                   </div>
                   <span style={{
                     fontSize: '0.72rem',
                     fontWeight: 800,
-                    color: '#38bdf8',
-                    backgroundColor: '#0f172a',
+                    color: '#0284c7',
+                    backgroundColor: 'var(--bg-card-alt)',
                     padding: '0.2rem 0.5rem',
                     borderRadius: '0.4rem',
                     display: 'inline-block',
-                    marginTop: '0.3rem'
+                    marginTop: '0.3rem',
+                    border: '1px solid var(--bg-border-light)'
                   }}>
                     {item.category}
                   </span>
@@ -277,25 +278,25 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
                 gap: '0.75rem',
-                backgroundColor: '#0f172a',
+                backgroundColor: 'var(--bg-card-alt)',
                 padding: '0.85rem',
                 borderRadius: '0.85rem',
-                border: '1px solid #1e293b'
+                border: '1px solid var(--bg-border-light)'
               }}>
                 <div>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
                     Tradução ao Pé da Letra:
                   </span>
-                  <p style={{ color: '#cbd5e1', fontSize: '0.9rem', marginTop: '0.15rem' }}>
+                  <p style={{ color: 'var(--text-main)', fontSize: '0.9rem', marginTop: '0.15rem' }}>
                     "{item.literalTranslation}"
                   </p>
                 </div>
 
                 <div>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#34d399', textTransform: 'uppercase' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#10b981', textTransform: 'uppercase' }}>
                     Significado Real em TI:
                   </span>
-                  <p style={{ color: '#ecfdf5', fontSize: '0.9rem', fontWeight: 700, marginTop: '0.15rem' }}>
+                  <p style={{ color: 'var(--text-main)', fontSize: '0.9rem', fontWeight: 700, marginTop: '0.15rem' }}>
                     {item.realItMeaning}
                   </p>
                 </div>
@@ -303,8 +304,8 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
 
               {/* Mnemonic Trigger Box */}
               <div style={{
-                backgroundColor: '#241b0e',
-                border: '1.5px solid #78350f',
+                backgroundColor: 'var(--bg-subcard)',
+                border: '1.5px solid #f59e0b',
                 padding: '0.85rem 1rem',
                 borderRadius: '0.85rem',
                 display: 'flex',
@@ -313,10 +314,10 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
               }}>
                 <Lightbulb size={20} color="#f59e0b" style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <span style={{ fontSize: '0.78rem', fontWeight: 900, color: '#f59e0b', textTransform: 'uppercase' }}>
+                  <span style={{ fontSize: '0.78rem', fontWeight: 900, color: '#d97706', textTransform: 'uppercase' }}>
                     Gatilho de Memorização (Para não esquecer):
                   </span>
-                  <p style={{ color: '#fef3c7', fontSize: '0.88rem', lineHeight: '1.45', marginTop: '0.2rem' }}>
+                  <p style={{ color: 'var(--text-main)', fontSize: '0.88rem', lineHeight: '1.45', marginTop: '0.2rem' }}>
                     {item.mnemonicTrigger}
                   </p>
                 </div>
@@ -327,17 +328,17 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                backgroundColor: '#0b101d',
+                backgroundColor: 'var(--bg-subcard)',
                 padding: '0.6rem 0.85rem',
                 borderRadius: '0.6rem',
-                border: '1px dashed #1e293b',
+                border: '1px dashed var(--bg-border)',
                 gap: '0.5rem'
               }}>
                 <div>
-                  <span style={{ fontSize: '0.85rem', color: '#f8fafc', fontWeight: 700, display: 'block' }}>
+                  <span style={{ fontSize: '0.85rem', color: 'var(--text-main)', fontWeight: 700, display: 'block' }}>
                     "{item.exampleEn}"
                   </span>
-                  <span style={{ fontSize: '0.78rem', color: '#94a3b8' }}>
+                  <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                     "{item.examplePt}"
                   </span>
                 </div>
@@ -347,7 +348,7 @@ export const ExpressionsView: React.FC<ExpressionsViewProps> = ({
                   style={{
                     background: 'transparent',
                     border: 'none',
-                    color: '#38bdf8',
+                    color: 'var(--text-muted)',
                     cursor: 'pointer',
                     padding: '0.3rem',
                     display: 'flex'

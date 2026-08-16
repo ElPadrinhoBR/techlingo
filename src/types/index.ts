@@ -119,6 +119,7 @@ export interface UserProgress {
   soundEnabled: boolean;
   notificationsEnabled: boolean;
   dailyReminderHour: number; // 0-23 (e.g. 19 for 19:00)
+  theme?: 'dark' | 'light';
 }
 
 export interface GlossaryItem {

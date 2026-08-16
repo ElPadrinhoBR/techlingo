@@ -41,7 +41,8 @@ const defaultProgress: UserProgress = {
   activeTrackId: 'gti',
   soundEnabled: true,
   notificationsEnabled: false,
-  dailyReminderHour: 19
+  dailyReminderHour: 19,
+  theme: 'dark'
 };
 
 export const App: React.FC = () => {
@@ -54,7 +55,8 @@ export const App: React.FC = () => {
         return {
           ...defaultProgress,
           ...parsed,
-          memorizedExpressionIds: parsed.memorizedExpressionIds || []
+          memorizedExpressionIds: parsed.memorizedExpressionIds || [],
+          theme: parsed.theme || 'dark'
         };
       }
     } catch (e) {
@@ -68,6 +70,12 @@ export const App: React.FC = () => {
   const [isHeartModalOpen, setIsHeartModalOpen] = useState<boolean>(false);
   const [isReminderModalOpen, setIsReminderModalOpen] = useState<boolean>(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState<boolean>(false);
+
+  // Sync theme attribute on <html> element
+  useEffect(() => {
+    const currentTheme = progress.theme || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  }, [progress.theme]);
 
   // Sync sound service state
   useEffect(() => {
@@ -159,6 +167,13 @@ export const App: React.FC = () => {
     }));
   };
 
+  const handleToggleTheme = () => {
+    setProgress((prev) => ({
+      ...prev,
+      theme: prev.theme === 'light' ? 'dark' : 'light'
+    }));
+  };
+
   const handleChangeTrack = (track: TrackId) => {
     setProgress((prev) => ({
       ...prev,
@@ -193,7 +208,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#0b0f19' }}>
+    <div data-theme={progress.theme || 'dark'} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--bg-main)' }}>
       {/* Top App Header */}
       <Header
         progress={progress}
@@ -201,6 +216,7 @@ export const App: React.FC = () => {
         onOpenReminderModal={() => setIsReminderModalOpen(true)}
         onOpenAboutModal={() => setIsAboutModalOpen(true)}
         onToggleSound={handleToggleSound}
+        onToggleTheme={handleToggleTheme}
       />
 
       {/* Main Content Body */}

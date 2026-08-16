@@ -120,30 +120,30 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
       flexDirection: 'column',
       gap: '1.5rem'
     }}>
-      {/* Header */}
+      {/* Header Banner */}
       <div style={{
-        backgroundColor: '#131b2e',
-        border: '2px solid #243253',
-        borderRadius: '1.5rem',
+        backgroundColor: 'var(--bg-card)',
+        border: '2px solid var(--bg-border)',
+        borderRadius: '1.25rem',
         padding: '1.5rem',
         display: 'flex',
         flexDirection: 'column',
         gap: '0.75rem',
-        boxShadow: '0 8px 24px rgba(0,0,0,0.3)'
+        boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#f59e0b' }}>
             <Dumbbell size={26} />
-            <h2 style={{ fontSize: '1.35rem', fontWeight: 900, color: '#ffffff' }}>
+            <h2 style={{ fontSize: '1.35rem', fontWeight: 900, color: 'var(--text-main)' }}>
               Arena de Treino & Recuperação de Vidas
             </h2>
           </div>
 
           <div style={{
-            backgroundColor: '#0f172a',
+            backgroundColor: 'var(--bg-card-alt)',
             padding: '0.4rem 0.8rem',
             borderRadius: '0.75rem',
-            border: '1px solid #334155',
+            border: '1px solid var(--bg-border-light)',
             display: 'flex',
             alignItems: 'center',
             gap: '0.4rem',
@@ -156,7 +156,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
           </div>
         </div>
 
-        <p style={{ fontSize: '0.88rem', color: '#94a3b8' }}>
+        <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
           Treine termos de Gestão de TI e programação sem perder vidas. Cada acerto concede <strong>+5 a +10 XP</strong> e <strong>restaura 1 vida</strong>!
         </p>
 
@@ -165,7 +165,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gap: '0.5rem',
-          backgroundColor: '#0f172a',
+          backgroundColor: 'var(--bg-card-alt)',
           padding: '0.35rem',
           borderRadius: '0.85rem'
         }}>
@@ -177,7 +177,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
             className="btn-3d"
             style={{
               backgroundColor: mode === 'flashcards' ? '#10b981' : 'transparent',
-              color: mode === 'flashcards' ? '#ffffff' : '#94a3b8',
+              color: mode === 'flashcards' ? '#ffffff' : 'var(--text-muted)',
               boxShadow: mode === 'flashcards' ? '0 3px 0 #047857' : 'none',
               padding: '0.6rem',
               fontSize: '0.85rem',
@@ -200,7 +200,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
             className="btn-3d"
             style={{
               backgroundColor: mode === 'quiz' ? '#38bdf8' : 'transparent',
-              color: mode === 'quiz' ? '#0f172a' : '#94a3b8',
+              color: mode === 'quiz' ? '#ffffff' : 'var(--text-muted)',
               boxShadow: mode === 'quiz' ? '0 3px 0 #0284c7' : 'none',
               padding: '0.6rem',
               fontSize: '0.85rem',
@@ -239,9 +239,9 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 whiteSpace: 'nowrap',
                 padding: '0.35rem 0.75rem',
                 borderRadius: '999px',
-                border: selectedCategory === cat ? '1px solid #10b981' : '1px solid #243253',
-                backgroundColor: selectedCategory === cat ? '#064e3b' : '#0f172a',
-                color: selectedCategory === cat ? '#34d399' : '#94a3b8',
+                border: selectedCategory === cat ? '1px solid #10b981' : '1px solid var(--bg-border)',
+                backgroundColor: selectedCategory === cat ? '#064e3b' : 'var(--bg-card-alt)',
+                color: selectedCategory === cat ? '#34d399' : 'var(--text-muted)',
                 fontSize: '0.75rem',
                 fontWeight: 700,
                 cursor: 'pointer'
@@ -263,8 +263,8 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
             }}
             style={{
               minHeight: '320px',
-              backgroundColor: '#131b2e',
-              border: '2px solid #334155',
+              backgroundColor: 'var(--bg-card)',
+              border: '2px solid var(--bg-border)',
               borderRadius: '1.5rem',
               padding: '2rem 1.5rem',
               cursor: 'pointer',
@@ -273,13 +273,13 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
               justifyContent: 'space-between',
               alignItems: 'center',
               textAlign: 'center',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
               userSelect: 'none'
             }}
           >
             <span style={{
               fontSize: '0.75rem',
-              color: '#64748b',
+              color: 'var(--text-dim)',
               fontWeight: 700,
               display: 'flex',
               alignItems: 'center',
@@ -295,11 +295,11 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 <span style={{
                   fontSize: '0.75rem',
                   fontWeight: 800,
-                  backgroundColor: '#0f172a',
-                  color: '#38bdf8',
+                  backgroundColor: 'var(--bg-card-alt)',
+                  color: '#0284c7',
                   padding: '0.3rem 0.75rem',
                   borderRadius: '999px',
-                  border: '1px solid #1e293b'
+                  border: '1px solid var(--bg-border-light)'
                 }}>
                   {currentItem.category}
                 </span>
@@ -307,13 +307,13 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                 <h3 style={{
                   fontSize: '2.25rem',
                   fontWeight: 900,
-                  color: '#ffffff',
+                  color: 'var(--text-main)',
                   fontFamily: 'var(--font-mono)'
                 }}>
                   {currentItem.term}
                 </h3>
 
-                <span style={{ fontSize: '1rem', color: '#94a3b8', fontStyle: 'italic' }}>
+                <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
                   {currentItem.phonetic}
                 </span>
 
@@ -338,26 +338,26 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   {currentItem.translation}
                 </span>
 
-                <p style={{ color: '#e2e8f0', fontSize: '0.95rem', lineHeight: '1.5', maxWidth: '480px' }}>
+                <p style={{ color: 'var(--text-main)', fontSize: '0.95rem', lineHeight: '1.5', maxWidth: '480px' }}>
                   {currentItem.itDefinition}
                 </p>
 
                 <div style={{
-                  backgroundColor: '#0f172a',
+                  backgroundColor: 'var(--bg-card-alt)',
                   padding: '0.6rem 1rem',
                   borderRadius: '0.75rem',
                   borderLeft: '3px solid #3b82f6',
                   fontSize: '0.85rem',
-                  color: '#93c5fd',
+                  color: 'var(--text-main)',
                   textAlign: 'left',
                   marginTop: '0.5rem'
                 }}>
-                  <strong>Gestão & Prática:</strong> {currentItem.managementContext}
+                  <strong style={{ color: '#2563eb' }}>Gestão & Prática:</strong> {currentItem.managementContext}
                 </div>
               </div>
             )}
 
-            <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>
+            <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', fontWeight: 600 }}>
               Cartão {((currentIndex) % activeItems.length) + 1} de {activeItems.length} | Acertos: {drillScore}
             </div>
           </div>
@@ -388,8 +388,8 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
         <div className="animate-pop-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           {/* Question Card */}
           <div style={{
-            backgroundColor: '#131b2e',
-            border: '2px solid #243253',
+            backgroundColor: 'var(--bg-card)',
+            border: '2px solid var(--bg-border)',
             borderRadius: '1.25rem',
             padding: '1.5rem',
             display: 'flex',
@@ -397,7 +397,7 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
             gap: '0.75rem'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#38bdf8', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#0284c7', textTransform: 'uppercase' }}>
                 Questão {((quizIndex) % activeItems.length) + 1} • Placar: {quizScore}
               </span>
               <button
@@ -409,8 +409,8 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
               </button>
             </div>
 
-            <h3 style={{ fontSize: '1.35rem', fontWeight: 900, color: '#ffffff' }}>
-              Qual o significado de <span style={{ color: '#38bdf8', fontFamily: 'var(--font-mono)' }}>"{currentQuizItem.term}"</span>?
+            <h3 style={{ fontSize: '1.35rem', fontWeight: 900, color: 'var(--text-main)' }}>
+              Qual o significado de <span style={{ color: '#0284c7', fontFamily: 'var(--font-mono)' }}>"{currentQuizItem.term}"</span>?
             </h3>
           </div>
 
@@ -438,8 +438,8 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                     width: '28px',
                     height: '28px',
                     borderRadius: '8px',
-                    backgroundColor: isSelected ? '#38bdf8' : '#0f172a',
-                    color: isSelected ? '#0f172a' : '#94a3b8',
+                    backgroundColor: isSelected ? '#38bdf8' : 'var(--bg-card-alt)',
+                    color: isSelected ? '#ffffff' : 'var(--text-muted)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -449,8 +449,8 @@ export const PracticeView: React.FC<PracticeViewProps> = ({
                   }}>
                     {String.fromCharCode(65 + idx)}
                   </div>
-                  <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc' }}>
-                    {opt.translation} — <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>{opt.itDefinition.substring(0, 75)}...</span>
+                  <span style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main)' }}>
+                    {opt.translation} — <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{opt.itDefinition.substring(0, 75)}...</span>
                   </span>
                 </div>
               );

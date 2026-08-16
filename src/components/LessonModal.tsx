@@ -261,7 +261,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
     <div style={{
       position: 'fixed',
       inset: 0,
-      backgroundColor: '#0b0f19',
+      backgroundColor: 'var(--bg-main)',
       zIndex: 50,
       display: 'flex',
       flexDirection: 'column',
@@ -270,7 +270,7 @@ export const LessonModal: React.FC<LessonModalProps> = ({
       {/* Top Header with Progress and Lives */}
       <div style={{
         padding: '1rem 1.5rem',
-        borderBottom: '1px solid #1e293b',
+        borderBottom: '1px solid var(--bg-border-light)',
         display: 'flex',
         alignItems: 'center',
         gap: '1.25rem',

@@ -30,9 +30,10 @@ export const Navigation: React.FC<NavigationProps> = ({
       left: 0,
       right: 0,
       zIndex: 35,
-      backgroundColor: '#0f172a',
-      borderTop: '2px solid #1e293b',
-      padding: '0.4rem 0.5rem'
+      backgroundColor: 'var(--bg-nav)',
+      borderTop: '2px solid var(--bg-border-light)',
+      padding: '0.4rem 0.5rem',
+      boxShadow: '0 -2px 10px rgba(0,0,0,0.05)'
     }}>
       <div style={{
         maxWidth: '680px',
@@ -60,8 +61,8 @@ export const Navigation: React.FC<NavigationProps> = ({
                 padding: '0.35rem 0.6rem',
                 borderRadius: '0.75rem',
                 border: 'none',
-                background: isActive ? '#1e293b' : 'transparent',
-                color: isActive ? '#10b981' : '#94a3b8',
+                background: isActive ? 'var(--bg-card-alt)' : 'transparent',
+                color: isActive ? '#10b981' : 'var(--text-muted)',
                 cursor: 'pointer',
                 transition: 'all 0.15s ease',
                 fontWeight: isActive ? 800 : 600,

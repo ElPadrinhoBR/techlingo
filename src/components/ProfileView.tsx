@@ -73,14 +73,14 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
 
       {/* Profile / Career Level Card */}
       <div style={{
-        backgroundColor: '#131b2e',
-        border: '2px solid #243253',
+        backgroundColor: 'var(--bg-card)',
+        border: '2px solid var(--bg-border)',
         borderRadius: '1.5rem',
         padding: '1.75rem',
         display: 'flex',
         flexDirection: 'column',
         gap: '1.25rem',
-        boxShadow: '0 8px 24px rgba(0,0,0,0.35)'
+        boxShadow: '0 8px 24px rgba(0,0,0,0.06)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
           <div style={{
@@ -102,16 +102,16 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
             <span style={{
               fontSize: '0.75rem',
               fontWeight: 800,
-              color: '#38bdf8',
-              backgroundColor: '#0f172a',
+              color: '#0284c7',
+              backgroundColor: 'var(--bg-card-alt)',
               padding: '0.2rem 0.6rem',
               borderRadius: '0.4rem',
-              border: '1px solid #1e293b',
+              border: '1px solid var(--bg-border-light)',
               textTransform: 'uppercase'
             }}>
               Nível {career.level} da Carreira GTI
             </span>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#ffffff', marginTop: '0.2rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--text-main)', marginTop: '0.2rem' }}>
               {career.title}
             </h2>
           </div>
@@ -119,13 +119,13 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
 
         {/* Level XP Bar */}
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', fontWeight: 700, color: '#94a3b8', marginBottom: '0.4rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
             <span>Progresso para próximo cargo</span>
             <span>{progress.totalXp} / {career.nextAt} XP</span>
           </div>
           <div style={{
             height: '10px',
-            backgroundColor: '#0f172a',
+            backgroundColor: 'var(--bg-card-alt)',
             borderRadius: '999px',
             overflow: 'hidden'
           }}>
@@ -147,49 +147,49 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
         gap: '1rem'
       }}>
         <div style={{
-          backgroundColor: '#131b2e',
-          border: '1.5px solid #243253',
+          backgroundColor: 'var(--bg-card)',
+          border: '1.5px solid var(--bg-border)',
           padding: '1.25rem 1rem',
           borderRadius: '1.25rem',
           textAlign: 'center'
         }}>
           <Zap size={24} color="#38bdf8" style={{ margin: '0 auto 0.4rem auto' }} />
-          <div style={{ fontSize: '1.5rem', fontWeight: 900, color: '#ffffff' }}>
+          <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--text-main)' }}>
             {progress.totalXp}
           </div>
-          <div style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 700 }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 700 }}>
             Total de XP
           </div>
         </div>
 
         <div style={{
-          backgroundColor: '#131b2e',
-          border: '1.5px solid #243253',
+          backgroundColor: 'var(--bg-card)',
+          border: '1.5px solid var(--bg-border)',
           padding: '1.25rem 1rem',
           borderRadius: '1.25rem',
           textAlign: 'center'
         }}>
           <Flame size={24} color="#f59e0b" style={{ margin: '0 auto 0.4rem auto' }} />
-          <div style={{ fontSize: '1.5rem', fontWeight: 900, color: '#ffffff' }}>
+          <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--text-main)' }}>
             {progress.currentStreak}
           </div>
-          <div style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 700 }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 700 }}>
             Dias de Ofensiva
           </div>
         </div>
 
         <div style={{
-          backgroundColor: '#131b2e',
-          border: '1.5px solid #243253',
+          backgroundColor: 'var(--bg-card)',
+          border: '1.5px solid var(--bg-border)',
           padding: '1.25rem 1rem',
           borderRadius: '1.25rem',
           textAlign: 'center'
         }}>
           <CheckCircle size={24} color="#10b981" style={{ margin: '0 auto 0.4rem auto' }} />
-          <div style={{ fontSize: '1.5rem', fontWeight: 900, color: '#ffffff' }}>
+          <div style={{ fontSize: '1.5rem', fontWeight: 900, color: 'var(--text-main)' }}>
             {progress.completedLessonIds.length}
           </div>
-          <div style={{ fontSize: '0.8rem', color: '#94a3b8', fontWeight: 700 }}>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 700 }}>
             Lições Concluídas
           </div>
         </div>
@@ -197,14 +197,14 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
 
       {/* SOBRE O AUTOR: ROBERTO LEANDRO MENDONÇA CORRÊA */}
       <div style={{
-        backgroundColor: '#131b2e',
+        backgroundColor: 'var(--bg-card)',
         border: '2px solid #3b82f6',
         borderRadius: '1.5rem',
         padding: '1.75rem',
         display: 'flex',
         flexDirection: 'column',
         gap: '1.25rem',
-        boxShadow: '0 8px 24px rgba(59, 130, 246, 0.15)',
+        boxShadow: '0 8px 24px rgba(59, 130, 246, 0.12)',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -218,7 +218,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
           borderRadius: '50%',
           backgroundColor: '#3b82f6',
           filter: 'blur(50px)',
-          opacity: 0.2,
+          opacity: 0.15,
           pointerEvents: 'none'
         }} />
 
@@ -247,22 +247,22 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
 
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
-                <h3 style={{ fontSize: '1.35rem', fontWeight: 900, color: '#ffffff' }}>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 900, color: 'var(--text-main)' }}>
                   Roberto Leandro Mendonça Corrêa
                 </h3>
                 <span style={{
                   fontSize: '0.72rem',
                   fontWeight: 800,
-                  color: '#38bdf8',
-                  backgroundColor: '#0f172a',
+                  color: '#0284c7',
+                  backgroundColor: 'var(--bg-card-alt)',
                   padding: '0.2rem 0.5rem',
                   borderRadius: '0.4rem',
-                  border: '1px solid #1e293b'
+                  border: '1px solid var(--bg-border-light)'
                 }}>
                   Criador do Projeto
                 </span>
               </div>
-              <span style={{ fontSize: '0.88rem', color: '#94a3b8', fontWeight: 700 }}>
+              <span style={{ fontSize: '0.88rem', color: 'var(--text-muted)', fontWeight: 700 }}>
                 Estudante de Gestão da Tecnologia da Informação (GTI)
               </span>
             </div>
@@ -282,8 +282,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
         </div>
 
         <div style={{
-          backgroundColor: '#0f172a',
-          border: '1px solid #1e293b',
+          backgroundColor: 'var(--bg-card-alt)',
+          border: '1px solid var(--bg-border-light)',
           borderRadius: '1rem',
           padding: '1.25rem',
           display: 'flex',
@@ -294,10 +294,10 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
             <Sparkles size={18} />
             <span>Engenharia & Concepção do Projeto</span>
           </div>
-          <p style={{ color: '#cbd5e1', fontSize: '0.9rem', lineHeight: '1.55' }}>
+          <p style={{ color: 'var(--text-main)', fontSize: '0.9rem', lineHeight: '1.55' }}>
             O <strong>TechLingo</strong> foi idealizado e desenvolvido por <strong>Roberto Leandro Mendonça Corrêa</strong> para capacitar estudantes e profissionais de GTI que nunca tiveram contato com o inglês técnico, ensinando de forma prática, gamificada e intuitiva.
           </p>
-          <p style={{ color: '#94a3b8', fontSize: '0.85rem', lineHeight: '1.5' }}>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: '1.5' }}>
             💡 <em>Plataforma completa e interativa concebida para acelerar a fluência técnica e o domínio de vocabulário corporativo de Tecnologia da Informação.</em>
           </p>
         </div>
@@ -398,7 +398,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#f59e0b' }}>
           <Trophy size={22} />
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: '#ffffff' }}>
+          <h3 style={{ fontSize: '1.25rem', fontWeight: 900, color: 'var(--text-main)' }}>
             Conquistas e Emblemas
           </h3>
         </div>
@@ -415,8 +415,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
               <div
                 key={ach.id}
                 style={{
-                  backgroundColor: '#131b2e',
-                  border: isUnlocked ? '2px solid #f59e0b' : '1.5px solid #1e293b',
+                  backgroundColor: 'var(--bg-card)',
+                  border: isUnlocked ? '2px solid #f59e0b' : '1.5px solid var(--bg-border)',
                   borderRadius: '1rem',
                   padding: '1rem',
                   display: 'flex',
@@ -429,8 +429,8 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
                   width: '50px',
                   height: '50px',
                   borderRadius: '50%',
-                  backgroundColor: isUnlocked ? '#33230a' : '#0f172a',
-                  border: isUnlocked ? '2px solid #f59e0b' : '1px solid #334155',
+                  backgroundColor: isUnlocked ? '#33230a' : 'var(--bg-card-alt)',
+                  border: isUnlocked ? '2px solid #f59e0b' : '1px solid var(--bg-border-light)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -443,7 +443,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
                   <div style={{
                     fontSize: '0.95rem',
                     fontWeight: 800,
-                    color: isUnlocked ? '#ffffff' : '#94a3b8',
+                    color: isUnlocked ? 'var(--text-main)' : 'var(--text-muted)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.4rem'
@@ -451,7 +451,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
                     {ach.title}
                     {isUnlocked && <span style={{ color: '#10b981', fontSize: '0.75rem' }}>✓ Desbloqueado</span>}
                   </div>
-                  <p style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '0.2rem' }}>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-dim)', marginTop: '0.2rem' }}>
                     {ach.description}
                   </p>
                 </div>

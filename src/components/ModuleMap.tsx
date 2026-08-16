@@ -141,8 +141,8 @@ export const ModuleMap: React.FC<ModuleMapProps> = ({
     }}>
       {/* Redesigned 4-Track Segmented Selector (No text cramping) */}
       <div style={{
-        backgroundColor: '#131b2e',
-        border: '2px solid #243253',
+        backgroundColor: 'var(--bg-card)',
+        border: '2px solid var(--bg-border)',
         borderRadius: '1.25rem',
         padding: '0.5rem',
         display: 'grid',
@@ -162,9 +162,9 @@ export const ModuleMap: React.FC<ModuleMapProps> = ({
               }}
               className="btn-3d"
               style={{
-                backgroundColor: isActive ? t.color : '#0f172a',
-                color: isActive ? '#0f172a' : '#f8fafc',
-                border: isActive ? `1px solid ${t.color}` : '1px solid #1e293b',
+                backgroundColor: isActive ? t.color : 'var(--bg-card-alt)',
+                color: isActive ? '#ffffff' : 'var(--text-main)',
+                border: isActive ? `1px solid ${t.color}` : '1px solid var(--bg-border-light)',
                 boxShadow: isActive ? `0 3px 0 ${t.shadow}` : 'none',
                 padding: '0.65rem 0.5rem',
                 borderRadius: '0.85rem',
@@ -186,8 +186,8 @@ export const ModuleMap: React.FC<ModuleMapProps> = ({
               <span style={{
                 fontSize: '0.68rem',
                 fontWeight: 700,
-                color: isActive ? '#0f172a' : '#94a3b8',
-                opacity: isActive ? 0.9 : 0.75,
+                color: isActive ? '#ffffff' : 'var(--text-muted)',
+                opacity: isActive ? 0.95 : 0.8,
                 lineHeight: 1
               }}>
                 {t.subLabel}
@@ -199,7 +199,7 @@ export const ModuleMap: React.FC<ModuleMapProps> = ({
 
       {/* Track Description Banner */}
       <div style={{
-        backgroundColor: '#131b2e',
+        backgroundColor: 'var(--bg-card)',
         border: `2px solid ${activeTrackObj.color}`,
         borderRadius: '1.25rem',
         padding: '1.25rem',
@@ -223,10 +223,10 @@ export const ModuleMap: React.FC<ModuleMapProps> = ({
           <Sparkles size={24} />
         </div>
         <div>
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#ffffff' }}>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--text-main)' }}>
             {activeBanner.title}
           </h3>
-          <p style={{ fontSize: '0.85rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>
             {activeBanner.desc}
           </p>
         </div>
@@ -242,7 +242,7 @@ export const ModuleMap: React.FC<ModuleMapProps> = ({
           <div key={module.id} style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
             {/* Unit Header Card */}
             <div style={{
-              backgroundColor: '#131b2e',
+              backgroundColor: 'var(--bg-card)',
               border: `2px solid ${module.themeColor}`,
               borderRadius: '1.25rem',
               padding: '1.25rem 1.5rem',
@@ -266,7 +266,7 @@ export const ModuleMap: React.FC<ModuleMapProps> = ({
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                   <div style={{
                     color: module.themeColor,
-                    backgroundColor: '#0f172a',
+                    backgroundColor: 'var(--bg-card-alt)',
                     padding: '0.4rem',
                     borderRadius: '0.5rem',
                     display: 'flex'
@@ -288,11 +288,11 @@ export const ModuleMap: React.FC<ModuleMapProps> = ({
                         marginLeft: '0.5rem',
                         fontSize: '0.7rem',
                         fontWeight: 800,
-                        backgroundColor: '#0f172a',
-                        color: '#94a3b8',
+                        backgroundColor: 'var(--bg-card-alt)',
+                        color: 'var(--text-muted)',
                         padding: '0.15rem 0.45rem',
                         borderRadius: '0.35rem',
-                        border: '1px solid #1e293b'
+                        border: '1px solid var(--bg-border-light)'
                       }}>
                         {module.levelTag}
                       </span>
@@ -303,20 +303,20 @@ export const ModuleMap: React.FC<ModuleMapProps> = ({
                 <span style={{
                   fontSize: '0.75rem',
                   fontWeight: 800,
-                  backgroundColor: isModuleComplete ? '#064e3b' : '#1e293b',
-                  color: isModuleComplete ? '#34d399' : '#94a3b8',
+                  backgroundColor: isModuleComplete ? '#064e3b' : 'var(--bg-card-alt)',
+                  color: isModuleComplete ? '#34d399' : 'var(--text-muted)',
                   padding: '0.25rem 0.6rem',
                   borderRadius: '999px',
-                  border: isModuleComplete ? '1px solid #10b981' : '1px solid #334155'
+                  border: isModuleComplete ? '1px solid #10b981' : '1px solid var(--bg-border)'
                 }}>
                   {completedCount}/{totalLessons} Concluídas
                 </span>
               </div>
 
-              <h2 style={{ fontSize: '1.35rem', fontWeight: 900, color: '#ffffff', letterSpacing: '-0.01em' }}>
+              <h2 style={{ fontSize: '1.35rem', fontWeight: 900, color: 'var(--text-main)', letterSpacing: '-0.01em' }}>
                 {module.title}
               </h2>
-              <p style={{ fontSize: '0.875rem', color: '#94a3b8' }}>
+              <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
                 {module.description}
               </p>
             </div>
