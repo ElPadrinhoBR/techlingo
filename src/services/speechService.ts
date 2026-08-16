@@ -1,17 +1,23 @@
 // Robust Speech Synthesis & Audio Pronunciation Service
-// Implements Chrome GC fix, resume() fix, dynamic voice loading, and Google TTS audio fallback
+// Supports Native Android TTS (via Capacitor), Browser Web Speech API & HTML5 Audio fallback
+
+import { TextToSpeech } from '@capacitor-community/text-to-speech';
+import { Capacitor } from '@capacitor/core';
 
 class SpeechService {
   private synth: SpeechSynthesis | null = null;
   private enVoice: SpeechSynthesisVoice | null = null;
-  private isSupported: boolean = false;
+  private isBrowserSpeechSupported: boolean = false;
+  private isNative: boolean = false;
   private activeUtterance: SpeechSynthesisUtterance | null = null;
   private fallbackAudio: HTMLAudioElement | null = null;
 
   constructor() {
+    this.isNative = Capacitor.isNativePlatform();
+
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       this.synth = window.speechSynthesis;
-      this.isSupported = true;
+      this.isBrowserSpeechSupported = true;
       this.loadVoices();
 
       if (window.speechSynthesis.onvoiceschanged !== undefined) {
@@ -22,26 +28,29 @@ class SpeechService {
 
   private loadVoices(): SpeechSynthesisVoice | null {
     if (!this.synth) return null;
-    const voices = this.synth.getVoices();
-    if (!voices || voices.length === 0) return null;
+    try {
+      const voices = this.synth.getVoices();
+      if (!voices || voices.length === 0) return null;
 
-    // Prioritize natural English voices (US / UK)
-    const preferred =
-      voices.find(v => (v.lang === 'en-US' || v.lang === 'en-GB') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Microsoft') || v.name.includes('Online'))) ||
-      voices.find(v => v.lang.startsWith('en-US')) ||
-      voices.find(v => v.lang.startsWith('en-GB')) ||
-      voices.find(v => v.lang.startsWith('en')) ||
-      voices.find(v => v.default);
+      // Prioritize natural English voices (US / UK)
+      const preferred =
+        voices.find(v => (v.lang === 'en-US' || v.lang === 'en-GB') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Microsoft') || v.name.includes('Online'))) ||
+        voices.find(v => v.lang.startsWith('en-US')) ||
+        voices.find(v => v.lang.startsWith('en-GB')) ||
+        voices.find(v => v.lang.startsWith('en')) ||
+        voices.find(v => v.default);
 
-    if (preferred) {
-      this.enVoice = preferred;
-      return preferred;
+      if (preferred) {
+        this.enVoice = preferred;
+        return preferred;
+      }
+    } catch (e) {
+      console.warn('Error loading voices:', e);
     }
     return null;
   }
 
   private cleanTextForSpeech(text: string): string {
-    // Remove phonetic brackets and extra punctuation for clean pronunciation
     return text
       .replace(/\/[^/]+\//g, '')
       .replace(/Sev-1/g, 'Severity 1')
@@ -50,7 +59,7 @@ class SpeechService {
       .trim();
   }
 
-  // Fallback using HTMLAudioElement if Web Speech synthesis fails or has no English voice
+  // Fallback using HTMLAudioElement
   private playFallbackAudio(text: string): Promise<void> {
     return new Promise((resolve) => {
       try {
@@ -86,83 +95,101 @@ class SpeechService {
     const text = this.cleanTextForSpeech(rawText);
     if (!text) return;
 
-    if (!this.isSupported || !this.synth) {
-      return this.playFallbackAudio(text);
+    // 1. If running as Native Android/iOS App via Capacitor, use Native TextToSpeech
+    if (this.isNative || Capacitor.getPlatform() === 'android') {
+      try {
+        await TextToSpeech.stop();
+        await TextToSpeech.speak({
+          text: text,
+          lang: 'en-US',
+          rate: rate,
+          pitch: 1.0,
+          volume: 1.0,
+          category: 'ambient'
+        });
+        return;
+      } catch (nativeErr) {
+        console.warn('Capacitor native TTS failed, falling back to Web Speech/Audio:', nativeErr);
+      }
     }
 
-    return new Promise((resolve) => {
-      try {
-        // Fix Chrome stuck speech synthesis
-        this.synth!.resume();
+    // 2. Desktop Browser Web Speech API
+    if (this.isBrowserSpeechSupported && this.synth) {
+      return new Promise((resolve) => {
+        try {
+          this.synth!.resume();
+          const voice = this.enVoice || this.loadVoices();
 
-        // If voices were not loaded at startup, try to load now
-        const voice = this.enVoice || this.loadVoices();
+          const utterance = new SpeechSynthesisUtterance(text);
+          this.activeUtterance = utterance;
 
-        const utterance = new SpeechSynthesisUtterance(text);
-        this.activeUtterance = utterance; // Retain reference to prevent garbage collection bug
-
-        if (voice) {
-          utterance.voice = voice;
-          utterance.lang = voice.lang;
-        } else {
-          utterance.lang = 'en-US';
-        }
-
-        utterance.rate = rate;
-        utterance.pitch = 1.0;
-        utterance.volume = 1.0;
-
-        let hasEnded = false;
-
-        const finish = () => {
-          if (!hasEnded) {
-            hasEnded = true;
-            this.activeUtterance = null;
-            resolve();
+          if (voice) {
+            utterance.voice = voice;
+            utterance.lang = voice.lang;
+          } else {
+            utterance.lang = 'en-US';
           }
-        };
 
-        utterance.onend = finish;
+          utterance.rate = rate;
+          utterance.pitch = 1.0;
+          utterance.volume = 1.0;
 
-        utterance.onerror = (e) => {
-          console.warn('Web Speech synthesis error, trying fallback audio...', e);
-          finish();
-          this.playFallbackAudio(text);
-        };
+          let hasEnded = false;
+          const finish = () => {
+            if (!hasEnded) {
+              hasEnded = true;
+              this.activeUtterance = null;
+              resolve();
+            }
+          };
 
-        // Safety timeout in case browser never fires onend
-        const timeout = setTimeout(() => {
-          if (!hasEnded) {
-            console.warn('Speech timeout, falling back to audio.');
-            this.synth?.cancel();
+          utterance.onend = finish;
+          utterance.onerror = () => {
             finish();
             this.playFallbackAudio(text);
-          }
-        }, 4000);
+          };
 
-        // Cancel previous utterance and trigger speak
-        this.synth!.cancel();
-        setTimeout(() => {
-          if (this.synth) {
-            this.synth.resume();
-            this.synth.speak(utterance);
-          }
-        }, 30);
-      } catch (err) {
-        console.error('SpeechService speak exception:', err);
-        this.playFallbackAudio(text).then(resolve);
-      }
-    });
+          const timeout = setTimeout(() => {
+            if (!hasEnded) {
+              this.synth?.cancel();
+              finish();
+              this.playFallbackAudio(text);
+            }
+          }, 3500);
+
+          this.synth!.cancel();
+          setTimeout(() => {
+            if (this.synth) {
+              this.synth.resume();
+              this.synth.speak(utterance);
+            }
+          }, 20);
+        } catch (err) {
+          console.warn('Web Speech API error:', err);
+          this.playFallbackAudio(text).then(resolve);
+        }
+      });
+    }
+
+    // 3. Fallback online audio stream
+    return this.playFallbackAudio(text);
   }
 
-  public stop() {
+  public async stop(): Promise<void> {
+    if (this.isNative) {
+      try {
+        await TextToSpeech.stop();
+      } catch (e) {
+        console.warn('Error stopping native TTS:', e);
+      }
+    }
     if (this.synth) {
       this.synth.cancel();
     }
     if (this.fallbackAudio) {
       this.fallbackAudio.pause();
+      this.fallbackAudio.currentTime = 0;
     }
-    this.activeUtterance = null;
   }
 }
 

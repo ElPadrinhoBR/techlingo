@@ -224,18 +224,27 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ progress, onOpenAboutM
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', justifyContent: 'space-between', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div style={{
-              width: '52px',
-              height: '52px',
+              width: '60px',
+              height: '60px',
               borderRadius: '50%',
               backgroundColor: '#1e3a8a',
-              border: '2px solid #38bdf8',
+              border: '2.5px solid #38bdf8',
+              overflow: 'hidden',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#38bdf8',
-              flexShrink: 0
+              flexShrink: 0,
+              boxShadow: '0 0 12px rgba(56, 189, 248, 0.35)'
             }}>
-              <User size={26} />
+              <img
+                src="/creator_photo.jpg"
+                alt="Roberto Leandro Mendonça Corrêa"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                onError={(e) => {
+                  (e.target as HTMLElement).style.display = 'none';
+                }}
+              />
             </div>
 
             <div>
